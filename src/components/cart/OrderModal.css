@@ -1,0 +1,98 @@
+.order-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.order-modal-content {
+  position: relative;
+  width: 70%;
+  height: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 30px);
+  max-height: calc(100dvh - 30px);
+  padding: 20px;
+  background: #fff8f2;
+  border-radius: 25px;
+  clip-path: inset(0 round 25px);
+}
+.order-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.order-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(85, 16, 4, 0.5);
+  border-radius: 10px;
+}
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: none;
+  background: none;
+  font-size: 35px;
+  cursor: pointer;
+}
+.active-order {
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 20px;
+  background: #fff8f2;
+  border: 2px solid #b60000;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.active-order h3 {
+  margin-top: 0;
+  color: #b60000;
+  text-align: center;
+}
+
+.active-order > p:first-of-type {
+  text-align: center;
+  margin: 18px 0;
+}
+
+.active-order > p:first-of-type strong {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: #b60000;
+  color: white;
+  border-radius: 8px;
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+
+.active-order-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ead8cc;
+}
+
+.active-order-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+@media (max-width: 1200px) {
+  .order-modal-content {
+    width: 90%;
+    height: auto;
+  }
+}

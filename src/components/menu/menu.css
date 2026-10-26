@@ -1,0 +1,104 @@
+#pizze,
+#frittura,
+#bevande {
+  padding: 80px 40px;
+  background: #fff8f2;
+}
+
+#pizze h2,
+#frittura h2,
+#bevande h2 {
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  font-size: 36px;
+  margin: 0 0 50px;
+}
+
+.menu-card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgb(201, 2, 2);
+}
+.menu-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;
+}
+.menu-card h3 {
+  text-align: center;
+  font-size: 22px;
+  margin: 15px 0;
+}
+.menu-size {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu-size button {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+}
+.menu-size button.active {
+  background: #551004;
+  color: whitesmoke;
+  border: none;
+}
+
+.menu-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.menu-bottom span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.menu-bottom button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  background: #ffffff46;
+  color: black;
+}
+.menu-bottom button:active {
+  transform: scale(1.1);
+}
+
+.pizza-list,
+.frittura-list,
+.bevande-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 300px));
+  justify-content: center;
+  gap: 25px;
+}
+@media (max-width: 1200px) {
+  .pizza-list,
+  .frittura-list,
+  .bevande-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
+    justify-content: center;
+    gap: 20px;
+  }
+  .menu-card {
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}

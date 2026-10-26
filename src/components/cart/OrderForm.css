@@ -1,0 +1,138 @@
+.delivery-choice {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.delivery-choice button {
+  width: fit-content;
+  padding: 8px 15px;
+  margin: 10px;
+  border: 2px solid #551004;
+  border-radius: 10px;
+  background: white;
+  color: #551004;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delivery-choice button.active {
+  background: #551004;
+  color: whitesmoke;
+}
+.delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.delivery-form h3 {
+  margin-bottom: 5px;
+}
+
+.delivery-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.delivery-form input:focus {
+  border-color: #551004;
+}
+.payment-choice button {
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 7px 13px;
+  font-size: 16px;
+  background: #fff;
+  color: black;
+  cursor: pointer;
+}
+.payment-choice button.active {
+  background-color: #551004;
+  color: whitesmoke;
+}
+.order-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #551004;
+}
+
+.order-summary h3 {
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+  font-size: 22px;
+}
+.confirm-order {
+  display: block;
+  margin: 10px auto 10px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 15px;
+  background: #551004;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.confirm-order:hover {
+  transform: scale(1.03);
+}
+
+.order-result {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.order-result.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.order-received {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.loading-spinner {
+  width: 35px;
+  height: 35px;
+  margin: 20px auto;
+  border: 4px solid #ddd;
+  border-top: 4px solid #ff7a00;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

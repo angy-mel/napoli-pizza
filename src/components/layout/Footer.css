@@ -1,0 +1,17 @@
+footer {
+  padding: 40px 20px;
+  text-align: baseline;
+  background: rgb(133, 9, 9);
+  color: whitesmoke;
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+footer p:last-child {
+  margin-top: 25px;
+  font-size: 14px;
+  text-align: center;
+}

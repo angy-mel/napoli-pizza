@@ -1,0 +1,164 @@
+.admin-container {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #313131;
+}
+
+.admin-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: whitesmoke;
+}
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 450px));
+  gap: 20px;
+}
+
+.order-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.order-card h2 {
+  margin-top: 0;
+  color: #d35400;
+  font-size: 24px;
+}
+
+.order-card p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.order-total {
+  font-size: 20px;
+  padding-top: 12px;
+  border-bottom: 1px solid #7a7878;
+}
+.order-card .btn-ready {
+  background: #16a34a;
+  color: white;
+}
+
+.order-card .btn-delivered {
+  background: #2563eb;
+  color: white;
+}
+
+.order-card .btn-delivered,
+.order-card .btn-ready {
+  padding: 5px 10px;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.order-card .btn-delivered:active,
+.order-card .btn-ready:active {
+  transform: scale(1.1);
+}
+
+.admin-login {
+  width: 100%;
+  max-width: 380px;
+  margin: 100px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-login h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #3b2a20;
+  font-size: 28px;
+}
+
+.admin-login label {
+  font-weight: 600;
+  color: #3b2a20;
+}
+
+.admin-login input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d8c9bc;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.admin-login input:focus {
+  border-color: #e87524;
+}
+
+.admin-login button {
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #e87524;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.admin-login button:hover {
+  background: #c95c16;
+  transform: translateY(-2px);
+}
+
+.admin-login p {
+  margin: 0;
+  color: #c0392b;
+  text-align: center;
+  font-size: 14px;
+}
+.admin-header {
+  margin-bottom: 0;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.admin-header .btn-logout,
+.admin-actions .btn-logout {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e87524;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.admin-actions .btn-logout:hover {
+  background-color: #c95c16;
+  transform: translateY(-2px);
+}

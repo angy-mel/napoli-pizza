@@ -1,0 +1,140 @@
+/* Затемнення фону */
+.track-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(40, 25, 15, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+/* Головне віконце */
+.track-modal {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 28px 30px;
+  box-sizing: border-box;
+  background: #fffaf5;
+  border: 1px solid #f0dfd0;
+  border-radius: 22px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: trackAppear 0.25s ease-out;
+}
+
+/* Заголовок */
+.track-modal h2 {
+  margin: 0 15px 25px;
+  color: #3b2a20;
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+/* Форма введення номера */
+.track-modal form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Поле введення */
+.track-modal input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1px solid #dfcbbb;
+  border-radius: 12px;
+  background: white;
+  color: #3b2a20;
+  font-size: 16px;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.track-modal input::placeholder {
+  color: #a99a8e;
+}
+
+.track-modal input:focus {
+  border-color: #e87524;
+  box-shadow: 0 0 0 3px rgba(232, 117, 36, 0.12);
+}
+
+/* Кнопка з галочкою */
+.track-modal form button {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 12px;
+  background: #e87524;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.track-modal form button:hover {
+  background: #c95c16;
+  transform: translateY(-2px);
+}
+
+/* Кнопка закриття */
+.track-modal .track-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #7b685a;
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.track-modal .track-close:hover {
+  background: #f4e6da;
+  color: #c95c16;
+}
+
+/* Повідомлення про статус */
+.track-modal .track-message {
+  margin: 20px 0 0;
+  padding: 12px;
+  border-radius: 10px;
+  color: #3b2a20;
+  background: #f5eadf;
+  font-size: 15px;
+  line-height: 1.5;
+}
+@media screen and (max-width: 600px) {
+  .track-overlay {
+    position: absolute;
+  }
+}

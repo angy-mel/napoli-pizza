@@ -1,0 +1,42 @@
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 75%,
+      rgba(255, 248, 242, 0.15) 82%,
+      rgba(255, 248, 242, 0.35) 88%,
+      rgba(255, 248, 242, 0.6) 94%,
+      #fff8f2 100%
+    ),
+    url("/napoli-pizza.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.order-btn {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: whitesmoke;
+  gap: 20px;
+  padding: 20px 70px;
+  background: rgba(246, 8, 8, 0.7);
+  text-shadow: 2px 2px 5px black;
+  border-radius: 20px;
+  transition: transform 0.4s ease;
+}
+.order-btn:hover {
+  transform: translateY(-25px);
+}

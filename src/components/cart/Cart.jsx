@@ -128,13 +128,12 @@ function Cart({ cart, setCart, language, activeOrders, setActiveOrders }) {
                 key={`${item.id}-${item.size}-${index}`}
               >
                 <span>
-                  {item.name[language]}
+                  {" "}
+                  {item.name[language]}{" "}
                   {item.size &&
-                    ` (${item.size === "small" ? "piccola" : "grande"})`}
-                  {" × "}
-                  {item.quantity}
+                    ` (${language === "it" ? (item.size === "small" ? "piccola" : "grande") : item.size === "small" ? "small" : "large"})`}{" "}
+                  {" × "} {item.quantity}{" "}
                 </span>
-
                 <strong>€{(item.price * item.quantity).toFixed(2)}</strong>
               </div>
             ))}

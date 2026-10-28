@@ -18,14 +18,6 @@ function PaymentChoice({ paymentMethod, setPaymentMethod, language }) {
       >
         💳 {language === "it" ? "Carta" : "Card"}
       </button>
-
-      <button
-        type="button"
-        className={paymentMethod === "paypal" ? "active" : ""}
-        onClick={() => setPaymentMethod("paypal")}
-      >
-        📱 PayPal
-      </button>
     </div>
   );
 }

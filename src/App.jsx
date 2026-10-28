@@ -9,6 +9,7 @@ import BevandeSection from "./components/menu/BevandeSection";
 import Cart from "./components/cart/Cart";
 import Footer from "./components/layout/Footer";
 import Admin from "./pages/Admin";
+import PaymentResult from "./components/cart/PaymentResult";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -28,15 +29,20 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    if (cart.length > 0) {
-      localStorage.setItem("cartTime", Date.now().toString());
-    } else {
+    if (cart.length === 0) {
+      localStorage.removeItem("cart");
       localStorage.removeItem("cartTime");
+      return;
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cartTime", Date.now().toString());
   }, [cart]);
 
   const [language, setLanguage] = useState("it");
+  const [showPaymentResult, setShowPaymentResult] = useState(() =>
+    new URLSearchParams(window.location.search).has("payment"),
+  );
   const [activeOrders, setActiveOrders] = useState(() => {
     const savedOrders = localStorage.getItem("activeOrders");
     return savedOrders ? JSON.parse(savedOrders) : [];
@@ -50,6 +56,7 @@ function App() {
   }, [activeOrders]);
   useEffect(() => {
     if (activeOrders.length === 0) return;
+
     const checkOrders = async () => {
       const results = await Promise.all(
         activeOrders.map(async (order) => {
@@ -57,29 +64,70 @@ function App() {
             const response = await fetch(
               `http://192.168.1.243:3000/track-order/${order.orderNumber}`,
             );
+
             if (response.status === 404) {
               return null;
             }
+
+            if (!response.ok) {
+              return order;
+            }
+
+            const data = await response.json();
+
+            if (data.status === "completed") {
+              return null;
+            }
+
             return order;
           } catch (error) {
             console.error(
               `Errore nel controllo dell'ordine ${order.orderNumber}:`,
               error,
             );
+
             return order;
           }
         }),
       );
-      const remainingOrder = results.filter(Boolean);
-      if (remainingOrder.length !== activeOrders.length) {
-        setActiveOrders(remainingOrder);
+
+      const remainingOrders = results.filter(Boolean);
+
+      if (remainingOrders.length !== activeOrders.length) {
+        setActiveOrders(remainingOrders);
       }
     };
+
     checkOrders();
+
     const interval = setInterval(checkOrders, 10000);
+
     return () => clearInterval(interval);
   }, [activeOrders]);
+  useEffect(() => {
+    const savedOrder = localStorage.getItem("pendingCardOrder");
 
+    if (!savedOrder) return;
+
+    try {
+      const order = JSON.parse(savedOrder);
+
+      setActiveOrders((previousOrders) => {
+        const alreadyExists = previousOrders.some(
+          (item) => item.orderNumber === order.orderNumber,
+        );
+
+        return alreadyExists ? previousOrders : [...previousOrders, order];
+      });
+
+      setCart([]);
+      localStorage.removeItem("cart");
+      localStorage.removeItem("cartTime");
+      localStorage.removeItem("pendingCardOrder");
+    } catch (error) {
+      console.error("Errore nel recupero dell'ordine:", error);
+    }
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
@@ -95,6 +143,7 @@ function App() {
                 />
                 <Hero language={language} />
               </div>
+              <PaymentResult language={language} />
               <a href="#cart" className="mobile-cart">
                 🛒
                 {cart.reduce((sum, item) => sum + item.quantity, 0) > 0 && (

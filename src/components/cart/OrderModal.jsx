@@ -64,8 +64,29 @@ function OrderModal({
           cart,
         }),
       });
+
       const data = await response.json();
-      form.reset();
+
+      if (paymentMethod === "card") {
+        if (!data.checkoutUrl) {
+          throw new Error("Stripe checkout URL is missing.");
+        }
+
+        localStorage.setItem(
+          "pendingCardOrder",
+          JSON.stringify({
+            orderNumber: data.orderNumber ?? data.orderId,
+            cart: [...cart],
+            total: cart.reduce(
+              (sum, item) => sum + item.price * item.quantity,
+              0,
+            ),
+          }),
+        );
+        console.log("Order response:", data);
+        window.location.href = data.checkoutUrl;
+        return;
+      }
 
       form.reset();
 
@@ -77,16 +98,17 @@ function OrderModal({
 
       setOrderId(data.orderId);
       setCart([]);
-      setIsLoading(false);
       setIsOrderOpen(false);
     } catch (error) {
-      console.error(error);
-      setIsLoading(false);
+      console.error("Order error:", error);
+
       alert(
         language === "it"
           ? "Si è verificato un errore. Riprova."
           : "Something went wrong. Please try again.",
       );
+    } finally {
+      setIsLoading(false);
     }
   };
   return (

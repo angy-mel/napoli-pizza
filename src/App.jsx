@@ -62,7 +62,7 @@ function App() {
         activeOrders.map(async (order) => {
           try {
             const response = await fetch(
-              `http://192.168.1.243:3000/track-order/${order.orderNumber}`,
+              `${import.meta.env.VITE_API_URL}/track-order/${order.orderNumber}`,
             );
 
             if (response.status === 404) {

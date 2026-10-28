@@ -48,22 +48,25 @@ function OrderModal({
     }
     setIsLoading(true);
     try {
-      const response = await fetch("http://192.168.1.243:3000/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetchfetch(
+        `${import.meta.env.VITE_API_URL}/orders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            address,
+            houseNumber,
+            zipCode,
+            deliveryType,
+            paymentMethod,
+            cart,
+          }),
         },
-        body: JSON.stringify({
-          name,
-          phone,
-          address,
-          houseNumber,
-          zipCode,
-          deliveryType,
-          paymentMethod,
-          cart,
-        }),
-      });
+      );
 
       const data = await response.json();
 

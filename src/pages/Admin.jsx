@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "./Admin.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Admin() {
   const [orders, setOrders] = useState([]);
@@ -15,7 +16,7 @@ function Admin() {
     setLoginError("");
 
     try {
-      const response = await fetch("http://localhost:3000/admin/login", {
+      const response = await fetch(`${API_URL}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +48,7 @@ function Admin() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:3000/orders", {
+    fetch(`${API_URL}/orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -75,7 +76,7 @@ function Admin() {
       });
   }, [token]);
   const handleReady = async (id) => {
-    await fetch(`http://localhost:3000/orders/${id}`, {
+    await fetch(`${API_URL}/orders/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -94,7 +95,7 @@ function Admin() {
   };
 
   const handleDelivered = async (id) => {
-    await fetch(`http://localhost:3000/orders/${id}`, {
+    await fetch(`${API_URL}/orders/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

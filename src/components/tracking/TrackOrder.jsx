@@ -22,7 +22,7 @@ function TrackOrder({ onClose, language }) {
     setMessage("");
     try {
       const response = await fetch(
-        `http://192.168.1.243:3000/track-order/${encodeURIComponent(number)}`,
+        `${import.meta.env.VITE_API_URL}/track-order/${encodeURIComponent(number)}`,
       );
       const data = await response.json();
       if (!response.ok) {

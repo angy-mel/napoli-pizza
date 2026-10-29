@@ -198,8 +198,8 @@ app.post("/orders", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: lineItems,
-      success_url: `${CLIENT_URL}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${CLIENT_URL}/?payment=cancelled`,
+      success_url: `${CLIENT_URL}/#/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${CLIENT_URL}/#/`,
       client_reference_id: String(result.lastInsertRowid),
       metadata: {
         orderNumber: String(orderNumber),

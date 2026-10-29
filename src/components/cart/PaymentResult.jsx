@@ -2,11 +2,17 @@ import { useEffect, useRef } from "react";
 
 function PaymentResult({ language }) {
   const alertShown = useRef(false);
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(
+      url.search || url.hash.split("?")[1] || "",
+    );
     const payment = params.get("payment");
+
     if (alertShown.current) return;
     alertShown.current = true;
+
     if (!payment) return;
 
     if (payment === "success") {

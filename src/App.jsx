@@ -1,6 +1,6 @@
 import "./components/menu/menu.css";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Hero from "./components/layout/Hero";
 import PizzaSection from "./components/menu/PizzaSection";
@@ -129,7 +129,7 @@ function App() {
     }
   }, []);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -169,7 +169,7 @@ function App() {
 
         <Route path="/admin" element={<Admin />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

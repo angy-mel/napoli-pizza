@@ -48,25 +48,22 @@ function OrderModal({
     }
     setIsLoading(true);
     try {
-      const response = await fetchfetch(
-        `${import.meta.env.VITE_API_URL}/orders`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            phone,
-            address,
-            houseNumber,
-            zipCode,
-            deliveryType,
-            paymentMethod,
-            cart,
-          }),
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          name,
+          phone,
+          address,
+          houseNumber,
+          zipCode,
+          deliveryType,
+          paymentMethod,
+          cart,
+        }),
+      });
 
       const data = await response.json();
 

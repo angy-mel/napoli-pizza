@@ -190,13 +190,19 @@ function Admin() {
               Pagamento:{" "}
               {order.paymentMethod === "cash"
                 ? "Contanti"
-                : order.paymentMethod === "paypal"
-                  ? "PayPal"
-                  : order.paymentMethod === "card"
-                    ? "Carta"
-                    : order.paymentMethod}
+                : order.paymentMethod === "card"
+                  ? "Carta"
+                  : order.paymentMethod}
             </p>
             <p>Telefono: {order.phone}</p>
+            <p>
+              Stato pagamento:{" "}
+              {order.paymentStatus === "paid"
+                ? "PAGATO"
+                : order.paymentStatus === "pending"
+                  ? "IN ATTESA"
+                  : "NON PAGATO"}
+            </p>
             <p className={`order-status ${order.status}`}>
               Stato:{" "}
               {order.status === "received"

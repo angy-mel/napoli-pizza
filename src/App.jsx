@@ -144,14 +144,22 @@ function App() {
                 <Hero language={language} />
               </div>
               <PaymentResult language={language} />
-              <a href="#cart" className="mobile-cart">
+
+              <button
+                className="mobile-cart"
+                onClick={() =>
+                  document
+                    .getElementById("cart")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
                 🛒
                 {cart.reduce((sum, item) => sum + item.quantity, 0) > 0 && (
                   <span>
                     {cart.reduce((sum, item) => sum + item.quantity, 0)}
                   </span>
                 )}
-              </a>
+              </button>
               <PizzaSection setCart={setCart} language={language} />
               <FritturaSection setCart={setCart} language={language} />
               <BevandeSection setCart={setCart} language={language} />

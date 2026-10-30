@@ -80,3 +80,18 @@ header button {
     font-size: 18px;
   }
 }
+nav button {
+  border: none;
+  background: transparent;
+  color: whitesmoke;
+  font-size: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cart-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}

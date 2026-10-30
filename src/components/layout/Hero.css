@@ -23,7 +23,8 @@
 }
 
 .order-btn {
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;

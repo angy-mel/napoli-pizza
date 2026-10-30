@@ -16,15 +16,47 @@ function Header({ cart, language, setLanguage }) {
       </div>
       <div className="header-actions">
         <nav>
-          <a href="#pizze">Pizza</a>
-          <a href="#frittura">
+          <button
+            onClick={() =>
+              document
+                .getElementById("pizze")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Pizza
+          </button>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("frittura")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
             {language === "it" ? "Frittura" : "Fried Food"}
-          </a>
-          <a href="#bevande">{language === "it" ? "Bevande" : "Drinks"}</a>
+          </button>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("bevande")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            {language === "it" ? "Bevande" : "Drinks"}
+          </button>
         </nav>
-        <a href="#cart" className="cart-link">
+
+        <button
+          className="cart-link"
+          onClick={() =>
+            document
+              .getElementById("cart")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
           🛒 {cartCount > 0 && <span>{cartCount}</span>}
-        </a>
+        </button>
 
         <button onClick={() => setIsTrackOrderOpen(true)}>
           {language === "it" ? "Traccia ordine" : "Track order"}

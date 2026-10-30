@@ -3,10 +3,17 @@ import "./Hero.css";
 function Hero({ language }) {
   return (
     <section className="hero">
-      <a href="#pizze" className="order-btn">
+      <button
+        className="order-btn"
+        onClick={() =>
+          document
+            .getElementById("pizze")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
+      >
         <span>{language === "it" ? "Ordina ora" : "Order now"}</span>
         <span>⬇</span>
-      </a>
+      </button>
     </section>
   );
 }
